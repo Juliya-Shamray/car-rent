@@ -13,9 +13,9 @@ import { PersistGate } from 'redux-persist/integration/react';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <>
     {/* <React.StrictMode> */}
-    <ToastContainer position="top-center" autoClose={1000} theme="light" />
+    <ToastContainer position="top-center" autoClose={1000} />
     <Provider store={store}>
-      <BrowserRouter basename="/goit-react-hw-08-phonebook">
+      <BrowserRouter basename="/car-rent">
         <PersistGate loading={null} persistor={persistor}>
           <App />
         </PersistGate>
