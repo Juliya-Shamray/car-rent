@@ -1,76 +1,62 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const StyledWrapper = styled.div`
-  & > div {
-    margin-bottom: 15px;
-    @media screen and (min-width: 768px) {
-      margin-bottom: 30px;
-    }
-  }
-  @media screen and (min-width: 1158px) {
+  min-height: 85vh;
+  @media screen and (min-width: 768px) {
     display: flex;
-    gap: 50px;
-    margin-top: 50px;
-    div {
-      width: 50%;
-    }
+    justify-content: space-between;
   }
-  h1 {
-    margin-bottom: 15px;
-    font-size: 24px;
-    @media screen and (min-width: 768px) {
-      margin-bottom: 25px;
-      font-size: 28px;
-    }
-    @media screen and (min-width: 1158px) {
-      margin-bottom: 50px;
-      max-width: 400px;
-      line-height: 1.5;
-    }
-  }
+`;
 
-  p {
+export const StyledTitle = styled.h1`
+  font-size: 30px;
+  margin-top: 10px;
+  font-style: italic;
+  text-align: center;
+  font-weight: bold;
+  @media screen and (min-width: 768px) {
+    margin-top: 200px;
+    width: 240px;
     line-height: 1.5;
-    font-size: 18px;
-    text-indent: 35px;
-    margin-bottom: 15px;
-    @media screen and (min-width: 768px) {
-      margin-bottom: 35px;
-    }
-    @media screen and (min-width: 1158px) {
-      margin-bottom: 50px;
-    }
   }
 `;
-export const StyledLink = styled(Link)`
-  color: black;
-  text-decoration: none;
-  text-transform: uppercase;
-  border-radius: 5px;
-  padding: 5px 15px;
-  background-color: #c1f1e4;
-  transition: background-color 250ms linear, color 250ms linear;
-  &:hover {
-    background-color: #444c5c;
-    color: white;
+export const StyledWrap = styled.div`
+  margin-top: 10px;
+  @media screen and (min-width: 768px) {
+    margin-top: 280px;
+    width: 350px;
   }
-`;
-
-export const StyledImg = styled.img`
-  @media screen and (min-width: 320px) and (max-width: 427px) {
-    min-width: 300px;
-  }
-  @media screen and (min-width: 428px) {
-    min-width: 400px;
-  }
-
   @media screen and (min-width: 1158px) {
-    max-width: 540px;
+    margin-top: 280px;
+    width: 500px;
   }
 `;
 
-export const StyledImgWrap = styled.div`
-  display: flex;
-  justify-content: center;
+export const StyleSubTitle = styled.h2`
+  font-size: 20px;
+`;
+
+export const StyleList = styled.ul`
+  list-style: disc;
+  padding-left: 15px;
+  margin-top: 10px;
+  li {
+    margin-bottom: 5px;
+  }
+`;
+export const StyledButton = styled.button`
+  margin: 20px auto;
+  background-color: #8bd18b;
+  border: none;
+  border-radius: 10px;
+  color: inherit;
+  text-transform: uppercase;
+  padding: 5px 15px;
+  display: block;
+  cursor: pointer;
+  transition: 0.3s background-color linear;
+  font-weight: 600;
+  &:hover {
+    background-color: #70eb70;
+  }
 `;

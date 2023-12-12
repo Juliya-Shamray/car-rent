@@ -1,10 +1,11 @@
 import { NavLink } from 'react-router-dom';
+import { StyledHeader, StyledList } from './Header.styled';
 
 export const Header = () => {
   return (
-    <header>
-      <nav>
-        <ul>
+    <StyledHeader>
+      <nav className="container">
+        <StyledList>
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
@@ -14,8 +15,8 @@ export const Header = () => {
           <li>
             <NavLink to="/favorite">Favorite</NavLink>
           </li>
-        </ul>
+        </StyledList>
       </nav>
-    </header>
+    </StyledHeader>
   );
 };
