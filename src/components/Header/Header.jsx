@@ -1,5 +1,4 @@
-import { NavLink } from 'react-router-dom';
-import { StyledHeader, StyledList } from './Header.styled';
+import { StyledHeader, StyledLink, StyledList } from './Header.styled';
 
 export const Header = () => {
   return (
@@ -7,13 +6,13 @@ export const Header = () => {
       <nav className="container">
         <StyledList>
           <li>
-            <NavLink to="/">Home</NavLink>
+            <StyledLink to="/">Home</StyledLink>
           </li>
           <li>
-            <NavLink to="/catalog">Catalog</NavLink>
+            <StyledLink to="/catalog">Catalog</StyledLink>
           </li>
           <li>
-            <NavLink to="/favorite">Favorite</NavLink>
+            <StyledLink to="/favorite">Favorite</StyledLink>
           </li>
         </StyledList>
       </nav>

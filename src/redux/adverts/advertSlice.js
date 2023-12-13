@@ -9,6 +9,11 @@ const catalogSlice = createSlice({
     error: null,
     page: 1,
   },
+  // reducers: {
+  //   onNextPage: state => {
+  //     state.page = state.page + 1;
+  //   },
+  // },
   extraReducers: builder => {
     builder
       .addCase(getAdvertsThunk.pending, state => {
@@ -24,11 +29,6 @@ const catalogSlice = createSlice({
         state.error = action.payload;
       });
   },
-  // reducers: {
-  //   onNextPage: state => {
-  //     state.page = state.page + 1;
-  //   },
-  // },
 });
 
 export const { onNextPage } = catalogSlice.actions;

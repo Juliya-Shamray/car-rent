@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
@@ -18,5 +19,11 @@ export const StyledList = styled.ul`
   }
   a:hover {
     color: violet;
+  }
+`;
+
+export const StyledLink = styled(NavLink)`
+  &.active {
+    text-decoration: underline;
   }
 `;

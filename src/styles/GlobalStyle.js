@@ -2,8 +2,11 @@ const { createGlobalStyle } = require('styled-components');
 
 export const GlobalStyle = createGlobalStyle`
   body {
-   font-family: sans-serif;
+   font-family: "Manrope",sans-serif;
    margin: 0 auto;
+   font-size: 12px;
+   font-style: normal;
+   font-weight: 400;
    
 h1,
 h2,
@@ -30,6 +33,7 @@ a{
 }
   }
   .container {
+    
     padding-left: 15px;
     padding-right: 15px;
     margin-left: auto;
@@ -41,8 +45,8 @@ a{
         max-width: 768px;
 }
 
-    @media screen and (min-width:1158px) {
-        max-width: 1158px;
+    @media screen and (min-width:1214px) {
+        max-width: 1214px;
     
 }
 

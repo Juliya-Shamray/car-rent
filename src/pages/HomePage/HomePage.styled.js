@@ -1,16 +1,25 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const StyledWrapper = styled.div`
-  min-height: 85vh;
+  min-height: 94vh;
   @media screen and (min-width: 768px) {
-    display: flex;
-    justify-content: space-between;
+    background-image: url('https://driveforce.ua/assets/uploads/images/content/83626-rent-car.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  & > div {
+    @media screen and (min-width: 768px) {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 `;
 
 export const StyledTitle = styled.h1`
   font-size: 30px;
-  margin-top: 10px;
+  padding-top: 10px;
   font-style: italic;
   text-align: center;
   font-weight: bold;
@@ -23,11 +32,11 @@ export const StyledTitle = styled.h1`
 export const StyledWrap = styled.div`
   margin-top: 10px;
   @media screen and (min-width: 768px) {
-    margin-top: 280px;
+    margin-top: 300px;
     width: 350px;
   }
   @media screen and (min-width: 1158px) {
-    margin-top: 280px;
+    margin-top: 400px;
     width: 500px;
   }
 `;
@@ -44,19 +53,20 @@ export const StyleList = styled.ul`
     margin-bottom: 5px;
   }
 `;
-export const StyledButton = styled.button`
+export const StyledButton = styled(Link)`
   margin: 20px auto;
-  background-color: #8bd18b;
+  background-color: black;
   border: none;
   border-radius: 10px;
-  color: inherit;
+  color: white;
   text-transform: uppercase;
-  padding: 5px 15px;
-  display: block;
+  padding: 8px 15px;
+  display: inline-block;
   cursor: pointer;
-  transition: 0.3s background-color linear;
+  transition: 0.3s background-color linear, 0.3s color linear;
   font-weight: 600;
   &:hover {
-    background-color: #70eb70;
+    background-color: white;
+    color: black;
   }
 `;

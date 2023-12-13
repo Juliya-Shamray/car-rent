@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { catalogReducer } from './contacts/advertSlice';
+import { catalogReducer } from './adverts/advertSlice';
 import {
   persistStore,
   persistReducer,
@@ -13,7 +13,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 const persistConfig = {
-  key: 'contacts',
+  key: 'adverts',
   version: 1,
   storage,
   whitelist: [],
@@ -22,7 +22,6 @@ const persistedReducer = persistReducer(persistConfig, catalogReducer);
 
 export const store = configureStore({
   reducer: {
-    // contacts: persistedReducer,
     adverts: persistedReducer,
   },
   middleware: getDefaultMiddleware =>

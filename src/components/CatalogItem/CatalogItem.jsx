@@ -1,25 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {
+  StyledButton,
+  StyledContent,
+  StyledImg,
+  StyledImgIcon,
+  StyledItem,
+  StyledSubText,
+  StyledSubTitle,
+  StyledWrap,
+  StyledWrapper,
+} from './CatalogItem.styled';
 
 export const CatalogItem = ({ advert }) => {
+  const [isActive, setIsActive] = useState(false);
+  const { address } = advert;
+  const [_, town, country] = address.split(',');
+
+  const handleIconClick = () => {
+    setIsActive(!isActive);
+  };
   return (
-    <div style={{ width: '264px' }}>
-      <img src={advert.img} alt="car" height={268} />
+    <StyledItem>
+      <StyledImg src={advert.img} alt="car" />
+      <StyledImgIcon
+        alt="heart"
+        $isActive={isActive}
+        onClick={handleIconClick}
+      />
 
-      <div>
-        <h2>
-          {advert.make} <span>{advert.model}</span>, {advert.year}
-        </h2>
-        <p>{advert.rentalPrice}</p>
-      </div>
-      <div>{advert.rentalCompany}</div>
-
-      <div>
-        {advert.type}&ensp;|&ensp;{advert.make}
-        &ensp;|&ensp;{Number(advert.mileage).toLocaleString('en')}
-        &ensp;|&ensp;{advert.accessories[0]}
-      </div>
-
-      <button>Learn more</button>
-    </div>
+      <StyledContent>
+        <StyledWrapper>
+          <StyledSubTitle>
+            {advert.make}, {advert.year}
+          </StyledSubTitle>
+          <StyledSubText>{advert.rentalPrice}</StyledSubText>
+        </StyledWrapper>
+        <StyledWrap>
+          {town}&ensp;|&ensp;{country}&ensp;|&ensp;{advert.rentalCompany}
+        </StyledWrap>
+        <StyledWrap>
+          {advert.type}&ensp;|&ensp;{advert.model}
+          &ensp;|&ensp;{Number(advert.mileage).toLocaleString('en')}
+          &ensp;|&ensp;{advert.accessories[0]}
+        </StyledWrap>
+        <StyledButton>Learn more</StyledButton>
+      </StyledContent>
+    </StyledItem>
   );
 };
