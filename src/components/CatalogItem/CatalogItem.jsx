@@ -14,8 +14,8 @@ import {
 export const CatalogItem = ({ advert }) => {
   const [isActive, setIsActive] = useState(false);
   const { address } = advert;
-  const [_, town, country] = address.split(',');
-
+  const [street, town, country] = address.split(',');
+  console.log(street);
   const handleIconClick = () => {
     setIsActive(!isActive);
   };
