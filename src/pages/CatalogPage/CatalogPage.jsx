@@ -9,6 +9,7 @@ import {
 } from 'redux/adverts/selectors';
 import { StyledButton, StyledList, StyledWrap } from './CatalogPage.styled';
 import { Link as ScrollLink } from 'react-scroll';
+import { Loader } from 'lucide-react';
 
 export const CatalogPage = () => {
   const [page, setPage] = useState(1);
@@ -27,7 +28,7 @@ export const CatalogPage = () => {
   return (
     <StyledWrap className="container">
       <StyledList>
-        {loading && <h2>Loading...</h2>}
+        {loading && <Loader />}
         {error && <h2>Something went wrong</h2>}
         {adverts.map((advert, index) => (
           <CatalogItem key={advert.id} advert={advert} />
