@@ -7,7 +7,7 @@ import {
   selectError,
   selectLoading,
 } from 'redux/adverts/selectors';
-import { StyledList } from './CatalogPage.styled';
+import { StyledButton, StyledList } from './CatalogPage.styled';
 
 export const CatalogPage = () => {
   const loading = useSelector(selectLoading);
@@ -28,7 +28,7 @@ export const CatalogPage = () => {
           <CatalogItem key={advert.id} advert={advert} />
         ))}
       </StyledList>
-      <button>Load more</button>
+      <StyledButton>Load more</StyledButton>
     </div>
   );
 };

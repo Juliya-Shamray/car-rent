@@ -12,4 +12,8 @@ export const StyledWrapper = styled.div`
   a {
     margin: 0 6px;
   }
+  a:hover,
+  a:focus {
+    color: green;
+  }
 `;

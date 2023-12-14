@@ -7,9 +7,7 @@ export const PageNotFound = () => {
       <h1>Ooops... Page is not found</h1>
       <p>
         You can go to
-        <Link className="text-teal-500 underline" to="/">
-          Home
-        </Link>
+        <Link to="/">Home</Link>
         page
       </p>
     </StyledWrapper>

@@ -4,6 +4,9 @@ import { ReactComponent as Heart } from '../../images/icons/heart.svg';
 export const StyledItem = styled.li`
   width: 274px;
   position: relative;
+  box-shadow: 1px 2px 10px 0;
+  border-radius: 14px;
+  overflow: hidden;
 `;
 
 export const StyledImg = styled.img`
@@ -19,13 +22,13 @@ export const StyledImgIcon = styled(Heart)`
   right: 14px;
   cursor: pointer;
   & * {
-    stroke: ${props => (props.$isActive ? 'green' : 'white')};
-    fill: ${props => (props.$isActive ? 'green' : 'none')};
+    stroke: ${props => (props.$isActive ? '#e23dc6' : 'green')};
+    fill: ${props => (props.$isActive ? '#e23dc6' : 'none')};
   }
 `;
 
 export const StyledContent = styled.div`
-  padding: 14px 5px 0px;
+  padding: 14px 5px 8px;
 `;
 export const StyledWrapper = styled.div`
   display: flex;
@@ -53,7 +56,7 @@ export const StyledWrap = styled.div`
 `;
 
 export const StyledButton = styled.button`
-  margin-top: 28px;
+  margin-top: 10px;
   width: 100%;
   padding: 12px 0;
   border-radius: 12px;
@@ -65,8 +68,12 @@ export const StyledButton = styled.button`
   background-color: #48e9db;
   cursor: pointer;
   transition: 300ms color linear, 300ms background-color linear;
-  &:hover {
+  &:hover,
+  &:focus {
     color: #48e9db;
     background-color: white;
+  }
+  @media screen and (min-width: 768px) {
+    margin-top: 28px;
   }
 `;

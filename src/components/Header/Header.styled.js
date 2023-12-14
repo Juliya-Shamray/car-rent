@@ -17,7 +17,8 @@ export const StyledList = styled.ul`
     transition: 0.3s color linear;
     font-weight: bold;
   }
-  a:hover {
+  a:hover,
+  a:focus {
     color: violet;
   }
 `;

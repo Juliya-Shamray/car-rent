@@ -65,7 +65,8 @@ export const StyledButton = styled(Link)`
   cursor: pointer;
   transition: 0.3s background-color linear, 0.3s color linear;
   font-weight: 600;
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: white;
     color: black;
   }
