@@ -7,13 +7,8 @@ const catalogSlice = createSlice({
     adverts: [],
     isLoading: false,
     error: null,
-    page: 1,
   },
-  // reducers: {
-  //   onNextPage: state => {
-  //     state.page = state.page + 1;
-  //   },
-  // },
+
   extraReducers: builder => {
     builder
       .addCase(getAdvertsThunk.pending, state => {
@@ -22,7 +17,7 @@ const catalogSlice = createSlice({
       .addCase(getAdvertsThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.adverts = [...action.payload];
+        state.adverts = [...state.adverts, ...action.payload];
       })
       .addCase(getAdvertsThunk.rejected, (state, action) => {
         state.isLoading = false;

@@ -1,5 +1,14 @@
 import styled from 'styled-components';
 
+export const StyledWrap = styled.div`
+  padding-top: 25px;
+  padding-bottom: 20px;
+  @media screen and (min-width: 768px) {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+`;
+
 export const StyledList = styled.ul`
   list-style: none;
   display: flex;
@@ -13,13 +22,11 @@ export const StyledList = styled.ul`
   }
   @media screen and (min-width: 1214px) {
     gap: 29px;
-    margin-bottom: 100px;
   }
 `;
 export const StyledButton = styled.button`
   display: block;
   margin: auto;
-  padding: 20px 0;
   color: violet;
   border: none;
   background-color: transparent;

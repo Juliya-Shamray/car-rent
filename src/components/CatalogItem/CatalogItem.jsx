@@ -20,6 +20,7 @@ export const CatalogItem = ({ advert }) => {
   const handleIconClick = () => {
     setIsActive(!isActive);
   };
+
   return (
     <StyledItem>
       <StyledImg src={advert.img} alt="car" />
