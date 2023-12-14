@@ -1,5 +1,5 @@
-import { FaRegHeart } from 'react-icons/fa6';
 import styled from 'styled-components';
+import { ReactComponent as Heart } from '../../images/icons/heart.svg';
 
 export const StyledItem = styled.li`
   width: 274px;
@@ -11,14 +11,17 @@ export const StyledImg = styled.img`
   border-radius: 14px;
 `;
 
-export const StyledImgIcon = styled(FaRegHeart)`
+export const StyledImgIcon = styled(Heart)`
   width: 18px;
   height: 18px;
   position: absolute;
   top: 14px;
   right: 14px;
   cursor: pointer;
-  color: ${props => (props.$isActive ? 'green' : 'white')};
+  & * {
+    stroke: ${props => (props.$isActive ? 'green' : 'white')};
+    fill: ${props => (props.$isActive ? 'green' : 'none')};
+  }
 `;
 
 export const StyledContent = styled.div`
