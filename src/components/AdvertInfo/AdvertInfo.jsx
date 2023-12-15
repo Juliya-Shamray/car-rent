@@ -1,7 +1,7 @@
 import {
-  StyledButton,
   StyledImg,
   StyledLi,
+  StyledLink,
   StyledList,
   StyledSpan,
   StyledSubText,
@@ -68,7 +68,7 @@ export const AdvertInfo = ({ advert }) => {
           Price: <span>{advert.rentalPrice}</span>
         </StyledLi>
       </StyledList>
-      <StyledButton>Rental car</StyledButton>
+      <StyledLink href="tel:+380730000000">Rental car</StyledLink>
     </>
   );
 };

@@ -64,7 +64,7 @@ export const StyledLi = styled.li`
   }
 `;
 
-export const StyledButton = styled.button`
+export const StyledLink = styled.a`
   padding: 12px 50px;
   border-radius: 12px;
   color: white;
