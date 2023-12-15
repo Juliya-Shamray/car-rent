@@ -10,13 +10,21 @@ import {
   StyledWrap,
   StyledWrapper,
 } from './CatalogItem.styled';
+import { Modal } from 'components/Modal/Modal';
 
 export const CatalogItem = ({ advert }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const open = item => {
+    setIsOpen(true);
+  };
+  const close = () => setIsOpen(false);
   const [isActive, setIsActive] = useState(false);
+
   const { address } = advert;
   const arr = address.split(',');
   arr.shift();
   const [town, country] = arr;
+
   const handleIconClick = () => {
     setIsActive(!isActive);
   };
@@ -44,8 +52,9 @@ export const CatalogItem = ({ advert }) => {
           &ensp;|&ensp;{Number(advert.mileage).toLocaleString('en')}
           &ensp;|&ensp;{advert.accessories[0]}
         </StyledWrap>
-        <StyledButton>Learn more</StyledButton>
+        <StyledButton onClick={open}>Learn more</StyledButton>
       </StyledContent>
+      {isOpen && <Modal close={close} advert={advert} />}
     </StyledItem>
   );
 };
