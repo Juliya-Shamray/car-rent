@@ -1,17 +1,17 @@
 import { CatalogItem } from 'components/CatalogItem/CatalogItem';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAdvertsThunk } from 'redux/adverts/operations';
+import { getAdvertsThunk } from 'redux/catalog/operations';
 import {
   selectAdverts,
   selectError,
   selectLoading,
   selectPage,
-} from 'redux/adverts/selectors';
+} from 'redux/catalog/selectors';
 import { StyledButton, StyledList, StyledWrap } from './CatalogPage.styled';
 import { Link as ScrollLink } from 'react-scroll';
 import { Loader } from '../../components/Loader/Loader';
-import { onLoadMore } from 'redux/adverts/advertSlice';
+import { onLoadMore } from 'redux/catalog/catalogSlice';
 
 export const CatalogPage = () => {
   const loading = useSelector(selectLoading);
