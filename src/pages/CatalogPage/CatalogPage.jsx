@@ -1,35 +1,40 @@
 import { CatalogItem } from 'components/CatalogItem/CatalogItem';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAdvertsThunk } from 'redux/adverts/operations';
 import {
   selectAdverts,
   selectError,
   selectLoading,
+  selectPage,
 } from 'redux/adverts/selectors';
 import { StyledButton, StyledList, StyledWrap } from './CatalogPage.styled';
 import { Link as ScrollLink } from 'react-scroll';
-import { Loader } from 'lucide-react';
+import { Loader } from '../../components/Loader/Loader';
+import { onLoadMore } from 'redux/adverts/advertSlice';
 
 export const CatalogPage = () => {
-  const [page, setPage] = useState(1);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
   const adverts = useSelector(selectAdverts);
-  const onClickLoadMore = () => {
-    setPage(prev => prev + 1);
-  };
+  const page = useSelector(selectPage);
+
   const dispatch = useDispatch();
 
+  const onClickLoadMore = () => {
+    dispatch(onLoadMore());
+    dispatch(getAdvertsThunk(page + 1));
+  };
+
   useEffect(() => {
-    dispatch(getAdvertsThunk(page));
-  }, [dispatch, page]);
+    if (adverts.length === 0) {
+      dispatch(getAdvertsThunk(page));
+    }
+  }, [adverts.length, dispatch, page]);
 
   return (
     <StyledWrap className="container">
       <StyledList>
-        {loading && <Loader />}
-        {error && <h2>Something went wrong</h2>}
         {adverts.map((advert, index) => (
           <CatalogItem key={advert.id} advert={advert} />
         ))}
@@ -39,7 +44,7 @@ export const CatalogPage = () => {
           to="scroll"
           smooth={true}
           duration={500}
-          offset={50}
+          offset={20}
           delay={1000}
         >
           <StyledButton id="scroll" onClick={onClickLoadMore}>
@@ -47,6 +52,8 @@ export const CatalogPage = () => {
           </StyledButton>
         </ScrollLink>
       )}
+      {loading && <Loader />}
+      {error && <h2>Something went wrong</h2>}
     </StyledWrap>
   );
 };

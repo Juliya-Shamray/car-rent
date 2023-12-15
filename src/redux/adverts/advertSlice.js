@@ -7,6 +7,12 @@ const catalogSlice = createSlice({
     adverts: [],
     isLoading: false,
     error: null,
+    page: 1,
+  },
+  reducers: {
+    onLoadMore: state => {
+      return { ...state, page: state.page + 1 };
+    },
   },
 
   extraReducers: builder => {
@@ -26,5 +32,5 @@ const catalogSlice = createSlice({
   },
 });
 
-export const { onNextPage } = catalogSlice.actions;
+export const { onLoadMore } = catalogSlice.actions;
 export const catalogReducer = catalogSlice.reducer;

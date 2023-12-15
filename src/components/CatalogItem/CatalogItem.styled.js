@@ -29,6 +29,9 @@ export const StyledImgIcon = styled(Heart)`
 
 export const StyledContent = styled.div`
   padding: 14px 5px 8px;
+  display: flex;
+  flex-direction: column;
+  min-height: 180px;
 `;
 export const StyledWrapper = styled.div`
   display: flex;
@@ -56,7 +59,7 @@ export const StyledWrap = styled.div`
 `;
 
 export const StyledButton = styled.button`
-  margin-top: 10px;
+  margin-top: auto;
   width: 100%;
   padding: 12px 0;
   border-radius: 12px;
@@ -72,8 +75,5 @@ export const StyledButton = styled.button`
   &:focus {
     color: #48e9db;
     background-color: white;
-  }
-  @media screen and (min-width: 768px) {
-    margin-top: 28px;
   }
 `;
