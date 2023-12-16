@@ -10,7 +10,18 @@ export const getAdvertsThunk = createAsyncThunk(
       const { data } = await axios.get('advert', {
         params: { page, limit: 12 },
       });
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
+export const getAllAdvertsThunk = createAsyncThunk(
+  'getAllAdverts',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await axios.get('advert');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

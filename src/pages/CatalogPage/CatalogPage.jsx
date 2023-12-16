@@ -12,6 +12,7 @@ import { StyledButton, StyledList, StyledWrap } from './CatalogPage.styled';
 import { Link as ScrollLink } from 'react-scroll';
 import { Loader } from '../../components/Loader/Loader';
 import { onLoadMore } from 'redux/catalog/catalogSlice';
+import { FilterForm } from 'components/FilterForm/FilterForm';
 
 export const CatalogPage = () => {
   const loading = useSelector(selectLoading);
@@ -34,6 +35,7 @@ export const CatalogPage = () => {
 
   return (
     <StyledWrap className="container">
+      <FilterForm />
       <StyledList>
         {adverts.map((advert, index) => (
           <CatalogItem key={advert.id} advert={advert} />
