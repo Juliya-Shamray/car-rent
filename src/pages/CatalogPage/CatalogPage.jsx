@@ -45,7 +45,7 @@ export const CatalogPage = () => {
           smooth={true}
           duration={500}
           offset={20}
-          delay={1000}
+          delay={500}
         >
           <StyledButton id="scroll" onClick={onClickLoadMore}>
             Load more

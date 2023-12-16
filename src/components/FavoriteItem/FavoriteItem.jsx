@@ -9,18 +9,12 @@ import {
   StyledSubTitle,
   StyledWrap,
   StyledWrapper,
-} from './CatalogItem.styled';
+} from '../CatalogItem/CatalogItem.styled';
 import { Modal } from 'components/Modal/Modal';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  addToFavorite,
-  removeFromFavorite,
-} from 'redux/favorite/favoriteSlice';
-import { selectFavorite } from 'redux/favorite/selectors';
+import { useDispatch } from 'react-redux';
+import { removeFromFavorite } from 'redux/favorite/favoriteSlice';
 
-export const CatalogItem = ({ advert }) => {
-  const favorites = useSelector(selectFavorite);
-
+export const FavoriteItem = ({ advert }) => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const open = item => {
@@ -28,27 +22,24 @@ export const CatalogItem = ({ advert }) => {
   };
   const close = () => setIsOpen(false);
 
-  const isFavorite = favorites.some(favorite => favorite.id === advert.id);
-
   const { address } = advert;
   const arr = address.split(',');
   arr.shift();
   const [town, country] = arr;
 
+  const [isActive, setIsActive] = useState(true);
+
   const handleIconClick = data => {
-    if (isFavorite) {
-      dispatch(removeFromFavorite(data));
-    } else {
-      dispatch(addToFavorite(data));
-    }
+    setIsActive(false);
+    dispatch(removeFromFavorite(data));
   };
 
   return (
     <StyledItem>
-      <StyledImg src={advert.img} alt="car" />
+      <StyledImg src={advert.img} alt="car" />{' '}
       <StyledImgIcon
         alt="heart"
-        $isActive={isFavorite}
+        $isActive={isActive}
         onClick={() => handleIconClick(advert)}
       />
       <StyledContent>
