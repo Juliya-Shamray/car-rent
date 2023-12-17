@@ -18,19 +18,19 @@ export const StyledWrapper = styled.div`
 `;
 
 export const StyledTitle = styled.h1`
-  font-size: 30px;
-  padding-top: 10px;
+  font-size: 35px;
+  padding-top: 50px;
   font-style: italic;
   text-align: center;
   font-weight: bold;
   @media screen and (min-width: 768px) {
-    margin-top: 200px;
-    width: 240px;
+    margin-top: 150px;
+    width: 280px;
     line-height: 1.5;
   }
 `;
 export const StyledWrap = styled.div`
-  margin-top: 10px;
+  margin-top: 80px;
   @media screen and (min-width: 768px) {
     margin-top: 300px;
     width: 350px;
@@ -50,17 +50,22 @@ export const StyleList = styled.ul`
   padding-left: 15px;
   margin-top: 10px;
   li {
+    font-size: 18px;
     margin-bottom: 5px;
   }
 `;
 export const StyledButton = styled(Link)`
-  margin: 20px auto;
+  @media screen and (max-width: 767px) {
+    display: flex;
+    width: max-content;
+  }
+  margin: 30px auto;
   background-color: black;
   border: none;
   border-radius: 10px;
   color: white;
   text-transform: uppercase;
-  padding: 8px 15px;
+  padding: 12px 20px;
   display: inline-block;
   cursor: pointer;
   transition: 0.3s background-color linear, 0.3s color linear;

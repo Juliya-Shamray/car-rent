@@ -17,6 +17,12 @@ const catalogSlice = createSlice({
     onLoadMore: state => {
       return { ...state, page: state.page + 1 };
     },
+    updateFilterBrand: (state, action) => {
+      return {
+        ...state,
+        filter: { ...state.filter, filterBrand: action.payload },
+      };
+    },
   },
 
   extraReducers: builder => {
@@ -48,5 +54,5 @@ const catalogSlice = createSlice({
   },
 });
 
-export const { onLoadMore } = catalogSlice.actions;
+export const { onLoadMore, updateFilterBrand } = catalogSlice.actions;
 export const catalogReducer = catalogSlice.reducer;

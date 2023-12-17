@@ -23,6 +23,12 @@ export const StyledButton = styled.button`
   font-weight: 600;
   line-height: 1.43;
   text-transform: uppercase;
+  cursor: pointer;
+  transition: 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
+  &:hover,
+  &:focus {
+    background-color: #8e5985;
+  }
 `;
 
 export const customStyles = {
@@ -54,6 +60,7 @@ export const customStyles = {
     color: state.isSelected ? '#121417' : 'rgba(18, 20, 23, 0.20)',
     backgroundColor: 'transparent',
     transition: '100ms color linear',
+    fontSize: '16px',
     '&:hover': {
       color: '#121417',
       backgroundColor: 'transparent',
@@ -63,23 +70,18 @@ export const customStyles = {
   menu: provided => ({
     ...provided,
     top: '121px',
-    fontSize: '16px',
     height: '272px',
     width: '224px',
     zIndex: 100,
     borderRadius: '14px',
-    background: '#FFFFFF',
   }),
   menuList: provided => ({
     ...provided,
     width: '224px',
     padding: '14px 8px 14px 18px',
     border: '1px solid rgba(18, 20, 23, 0.05)',
+    borderRadius: '14px',
     background: '#FFFFFF',
     boxShadow: '0px 4px 36px 0px rgba(0, 0, 0, 0.02)',
-  }),
-  clearIndicator: provided => ({
-    ...provided,
-    display: 'none',
   }),
 };
