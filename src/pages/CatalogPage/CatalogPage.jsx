@@ -15,6 +15,7 @@ import { Link as ScrollLink } from 'react-scroll';
 import { Loader } from '../../components/Loader/Loader';
 import { onLoadMore } from 'redux/catalog/catalogSlice';
 import { FilterForm } from 'components/FilterForm/FilterForm';
+import { toast } from 'react-toastify';
 
 export const CatalogPage = () => {
   const loading = useSelector(selectLoading);
@@ -48,13 +49,20 @@ export const CatalogPage = () => {
 
   useEffect(() => {
     if (adverts.length === 0) {
-      dispatch(getAdvertsThunk(page));
+      dispatch(getAdvertsThunk(page))
+        .unwrap()
+        .then(() => {
+          toast.success('32 advertisements found');
+        });
     }
   }, [adverts.length, dispatch, page]);
 
   return (
     <StyledWrap className="container">
       <FilterForm />
+      {filteredData.length !== 0
+        ? toast.success(`We found ${filteredData.length} advertisements`)
+        : null}
       <StyledList>
         {isFilterOn
           ? filteredData.map(advert => (
@@ -64,7 +72,7 @@ export const CatalogPage = () => {
               <CatalogItem key={advert.id} advert={advert} />
             ))}
       </StyledList>
-      {!isFilterOn &&
+      {filteredData.length % 12 === 0 &&
         adverts.length &&
         !loading &&
         adverts.length % 12 === 0 && (
