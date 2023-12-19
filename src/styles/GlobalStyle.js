@@ -7,7 +7,7 @@ export const GlobalStyle = createGlobalStyle`
    font-size: 12px;
    font-style: normal;
    font-weight: 400;
-   
+
 h1,
 h2,
 h3,
@@ -51,4 +51,6 @@ a{
 }
 
 
-}`;
+}
+
+`;

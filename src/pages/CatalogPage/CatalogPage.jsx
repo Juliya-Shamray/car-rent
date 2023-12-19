@@ -6,7 +6,7 @@ import {
   selectAdverts,
   selectAllAdverts,
   selectError,
-  selectFilter,
+  selectFilterBrand,
   selectLoading,
   selectPage,
 } from 'redux/catalog/selectors';
@@ -23,11 +23,11 @@ export const CatalogPage = () => {
   const adverts = useSelector(selectAdverts);
   const page = useSelector(selectPage);
   const allAdverts = useSelector(selectAllAdverts);
-  const filter = useSelector(selectFilter);
+  const filterBrand = useSelector(selectFilterBrand);
 
   const dispatch = useDispatch();
 
-  const isFilterOn = Boolean(filter);
+  const isFilterOn = Boolean(filterBrand);
 
   useEffect(() => {
     if (allAdverts.length !== 0) {
@@ -37,7 +37,7 @@ export const CatalogPage = () => {
   }, [allAdverts.length, dispatch]);
 
   const filterAllAdverts = () => {
-    return allAdverts.filter(advert => advert.make === filter);
+    return allAdverts.filter(advert => advert.make === filterBrand);
   };
 
   const filteredData = filterAllAdverts();

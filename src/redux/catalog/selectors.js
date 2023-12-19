@@ -4,4 +4,5 @@ export const selectLoading = state => state.catalog.isLoading;
 export const selectError = state => state.catalog.error;
 export const selectPage = state => state.catalog.page;
 
-export const selectFilter = state => state.catalog.filter.filterBrand;
+export const selectFilterBrand = state => state.catalog.filter.filterBrand;
+export const selectFilterPrice = state => state.catalog.filter.filterPrice;

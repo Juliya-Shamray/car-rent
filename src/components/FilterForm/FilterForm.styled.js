@@ -10,7 +10,22 @@ export const StyledForm = styled.form`
   @media screen and (min-width: 768px) {
     flex-direction: row;
     margin-bottom: 20px;
+    align-items: flex-end;
   }
+`;
+
+export const StyledWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
+export const StyledText = styled.label`
+  color: #8a8a89;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.29;
+  display: block;
 `;
 
 export const StyledButton = styled.button`
@@ -31,27 +46,34 @@ export const StyledButton = styled.button`
   }
 `;
 
-export const customStyles = {
-  container: () => ({
-    width: '224px',
-  }),
+export const baseCustomStyles = {
   control: (provided, state) => ({
     ...provided,
-    padding: '14px 18px',
-    display: 'flex',
+    padding: '6px 10px 6px 18px',
     border: 'none',
     borderRadius: '14px',
     background: '#f7f7fb',
     color: '#121417',
     fontFamily: 'Manrope',
-    fontSize: '18px',
     fontWeight: '500',
+    fontSize: '18px',
     lineHeight: '1.11',
     cursor: 'pointer',
     svg: {
       color: '#121417',
+      transform: state.isFocused ? 'rotate(180deg)' : 'rotate(0deg)',
+      transition: 'transform 0.3s ease',
     },
   }),
+  valueContainer: (provided, state) => ({
+    ...provided,
+    padding: 0,
+  }),
+  placeholder: (provided, state) => ({
+    ...provided,
+    color: '#121417',
+  }),
+
   indicatorSeparator: () => ({
     display: 'none',
   }),
@@ -67,9 +89,16 @@ export const customStyles = {
     },
     cursor: 'pointer',
   }),
+};
+
+export const customStyles = {
+  ...baseCustomStyles,
+  container: () => ({
+    width: '224px',
+  }),
   menu: provided => ({
     ...provided,
-    top: '121px',
+    top: 'auto',
     height: '272px',
     width: '224px',
     zIndex: 100,
@@ -78,6 +107,30 @@ export const customStyles = {
   menuList: provided => ({
     ...provided,
     width: '224px',
+    padding: '14px 8px 14px 18px',
+    border: '1px solid rgba(18, 20, 23, 0.05)',
+    borderRadius: '14px',
+    background: '#FFFFFF',
+    boxShadow: '0px 4px 36px 0px rgba(0, 0, 0, 0.02)',
+  }),
+};
+
+export const custom2Styles = {
+  ...baseCustomStyles,
+  container: () => ({
+    width: '130px',
+  }),
+  menu: provided => ({
+    ...provided,
+    top: 'auto',
+    width: '130px',
+    maxHeight: '188px',
+    zIndex: 100,
+    borderRadius: '14px',
+  }),
+  menuList: provided => ({
+    ...provided,
+    width: '130px',
     padding: '14px 8px 14px 18px',
     border: '1px solid rgba(18, 20, 23, 0.05)',
     borderRadius: '14px',

@@ -24,8 +24,7 @@ export const FavoriteItem = ({ advert }) => {
 
   const { address } = advert;
   const arr = address.split(',');
-  arr.shift();
-  const [town, country] = arr;
+  const [, town, country] = arr;
 
   const [isActive, setIsActive] = useState(true);
 
@@ -41,6 +40,7 @@ export const FavoriteItem = ({ advert }) => {
         alt="heart"
         $isActive={isActive}
         onClick={() => handleIconClick(advert)}
+        aria-label="heart"
       />
       <StyledContent>
         <StyledWrapper>

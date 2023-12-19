@@ -32,8 +32,8 @@ export const CatalogItem = ({ advert }) => {
 
   const { address } = advert;
   const arr = address.split(',');
-  arr.shift();
-  const [town, country] = arr;
+
+  const [, town, country] = arr;
 
   const handleIconClick = data => {
     if (isFavorite) {
@@ -50,6 +50,7 @@ export const CatalogItem = ({ advert }) => {
         alt="heart"
         $isActive={isFavorite}
         onClick={() => handleIconClick(advert)}
+        aria-label="heart"
       />
       <StyledContent>
         <StyledWrapper>

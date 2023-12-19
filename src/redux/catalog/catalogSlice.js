@@ -11,6 +11,7 @@ const catalogSlice = createSlice({
     page: 1,
     filter: {
       filterBrand: '',
+      filterPrice: '',
     },
   },
   reducers: {
@@ -21,6 +22,12 @@ const catalogSlice = createSlice({
       return {
         ...state,
         filter: { ...state.filter, filterBrand: action.payload },
+      };
+    },
+    updateFilterPrice: (state, action) => {
+      return {
+        ...state,
+        filter: { ...state.filter, filterPrice: action.payload },
       };
     },
   },
@@ -54,5 +61,6 @@ const catalogSlice = createSlice({
   },
 });
 
-export const { onLoadMore, updateFilterBrand } = catalogSlice.actions;
+export const { onLoadMore, updateFilterBrand, updateFilterPrice } =
+  catalogSlice.actions;
 export const catalogReducer = catalogSlice.reducer;
