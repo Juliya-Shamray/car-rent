@@ -9,6 +9,8 @@ import {
   selectFilterBrand,
   selectFilterPrice,
   selectLoading,
+  selectMileageFrom,
+  selectMileageTo,
   selectPage,
 } from 'redux/catalog/selectors';
 import { StyledButton, StyledList, StyledWrap } from './CatalogPage.styled';
@@ -26,10 +28,15 @@ export const CatalogPage = () => {
   const allAdverts = useSelector(selectAllAdverts);
   const filterBrand = useSelector(selectFilterBrand);
   const filterPrice = useSelector(selectFilterPrice);
+  const filterMileageTo = useSelector(selectMileageTo);
+  const filterMileageFrom = useSelector(selectMileageFrom);
 
   const dispatch = useDispatch();
 
-  const isFilterOn = Boolean(filterBrand) || Boolean(filterPrice);
+  const isFilterOn =
+    Boolean(filterBrand) ||
+    Boolean(filterPrice) ||
+    (Boolean(filterMileageTo) && Boolean(filterMileageFrom));
 
   useEffect(() => {
     if (allAdverts.length !== 0) {

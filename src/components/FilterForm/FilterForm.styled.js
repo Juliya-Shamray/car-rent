@@ -3,8 +3,9 @@ import styled from 'styled-components';
 export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 18px;
   margin-bottom: 20px;
   @media screen and (min-width: 768px) {
@@ -20,12 +21,49 @@ export const StyledWrap = styled.div`
   gap: 8px;
 `;
 
-export const StyledText = styled.label`
+export const StyledLabel = styled.label`
   color: #8a8a89;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.29;
   display: block;
+`;
+
+export const StyledInput = styled.label`
+  padding: 14px 24px;
+  border-radius: 14px 0px 0px 14px;
+  border-right: 1px solid rgba(138, 138, 137, 0.2);
+  background: #f7f7fb;
+  color: #121417;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.11;
+  display: inline-block;
+  max-width: 160px;
+`;
+export const StyledInput2 = styled.label`
+  padding: 14px 24px;
+  border-radius: 0px 14px 14px 0px;
+  border-right: 1px solid rgba(138, 138, 137, 0.2);
+  background: #f7f7fb;
+  color: #121417;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.11;
+  display: inline-block;
+  max-width: 160px;
+`;
+
+export const StyledFromTo = styled.input`
+  width: 63px;
+  border: none;
+  background-color: inherit;
+`;
+
+export const StyledWrapInputs = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 `;
 
 export const StyledButton = styled.button`
