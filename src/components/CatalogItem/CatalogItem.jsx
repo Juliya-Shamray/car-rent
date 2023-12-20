@@ -17,6 +17,7 @@ import {
   removeFromFavorite,
 } from 'redux/favorite/favoriteSlice';
 import { selectFavorite } from 'redux/favorite/selectors';
+import placeHolder from '../../images/placeHolder.png';
 
 export const CatalogItem = ({ advert }) => {
   const favorites = useSelector(selectFavorite);
@@ -45,7 +46,13 @@ export const CatalogItem = ({ advert }) => {
 
   return (
     <StyledItem>
-      <StyledImg src={advert.img} alt="car" />
+      <StyledImg
+        src={advert.img || placeHolder}
+        alt="car"
+        onError={e => {
+          e.target.src = placeHolder;
+        }}
+      />
       <StyledImgIcon
         alt="heart"
         $isActive={isFavorite}

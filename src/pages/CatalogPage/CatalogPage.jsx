@@ -7,6 +7,7 @@ import {
   selectAllAdverts,
   selectError,
   selectFilterBrand,
+  selectFilterPrice,
   selectLoading,
   selectPage,
 } from 'redux/catalog/selectors';
@@ -24,10 +25,11 @@ export const CatalogPage = () => {
   const page = useSelector(selectPage);
   const allAdverts = useSelector(selectAllAdverts);
   const filterBrand = useSelector(selectFilterBrand);
+  const filterPrice = useSelector(selectFilterPrice);
 
   const dispatch = useDispatch();
 
-  const isFilterOn = Boolean(filterBrand);
+  const isFilterOn = Boolean(filterBrand) || Boolean(filterPrice);
 
   useEffect(() => {
     if (allAdverts.length !== 0) {
@@ -37,7 +39,13 @@ export const CatalogPage = () => {
   }, [allAdverts.length, dispatch]);
 
   const filterAllAdverts = () => {
-    return allAdverts.filter(advert => advert.make === filterBrand);
+    return allAdverts.filter(
+      advert =>
+        (filterBrand ? advert.make === filterBrand : true) &&
+        (filterPrice
+          ? Number(advert.rentalPrice.slice(1)) <= Number(filterPrice)
+          : true)
+    );
   };
 
   const filteredData = filterAllAdverts();
@@ -57,25 +65,30 @@ export const CatalogPage = () => {
     }
   }, [adverts.length, dispatch, page]);
 
+  useEffect(() => {
+    if (isFilterOn && filteredData.length > 0) {
+      toast.success(`We found ${filteredData.length} advertisements`);
+    }
+  }, [isFilterOn, filteredData.length]);
+
   return (
     <StyledWrap className="container">
       <FilterForm />
-      {filteredData.length !== 0
-        ? toast.success(`We found ${filteredData.length} advertisements`)
-        : null}
+      {filteredData.length === 0 && !loading && (
+        <h2 style={{ textAlign: 'center', marginTop: '100px' }}>
+          No matches found
+        </h2>
+      )}
+
       <StyledList>
-        {isFilterOn
-          ? filteredData.map(advert => (
-              <CatalogItem key={advert.id} advert={advert} />
-            ))
-          : adverts.map(advert => (
-              <CatalogItem key={advert.id} advert={advert} />
-            ))}
+        {(isFilterOn ? filteredData : adverts).map(advert => {
+          return <CatalogItem key={advert.id} advert={advert} />;
+        })}
       </StyledList>
-      {filteredData.length % 12 === 0 &&
+      {!isFilterOn &&
         adverts.length &&
-        !loading &&
-        adverts.length % 12 === 0 && (
+        adverts.length % 12 === 0 &&
+        !loading && (
           <ScrollLink
             to="scroll"
             smooth={true}
@@ -88,6 +101,7 @@ export const CatalogPage = () => {
             </StyledButton>
           </ScrollLink>
         )}
+
       {loading && <Loader />}
       {error && <h2>Something went wrong</h2>}
     </StyledWrap>

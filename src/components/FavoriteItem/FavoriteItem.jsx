@@ -3,7 +3,6 @@ import {
   StyledButton,
   StyledContent,
   StyledImg,
-  StyledImgIcon,
   StyledItem,
   StyledSubText,
   StyledSubTitle,
@@ -26,22 +25,9 @@ export const FavoriteItem = ({ advert }) => {
   const arr = address.split(',');
   const [, town, country] = arr;
 
-  const [isActive, setIsActive] = useState(true);
-
-  const handleIconClick = data => {
-    setIsActive(false);
-    dispatch(removeFromFavorite(data));
-  };
-
   return (
     <StyledItem>
       <StyledImg src={advert.img} alt="car" />{' '}
-      <StyledImgIcon
-        alt="heart"
-        $isActive={isActive}
-        onClick={() => handleIconClick(advert)}
-        aria-label="heart"
-      />
       <StyledContent>
         <StyledWrapper>
           <StyledSubTitle>
@@ -57,7 +43,13 @@ export const FavoriteItem = ({ advert }) => {
           &ensp;|&ensp;{Number(advert.mileage).toLocaleString('en')}
           &ensp;|&ensp;{advert.accessories[0]}
         </StyledWrap>
-        <StyledButton onClick={open}>Learn more</StyledButton>
+
+        <StyledButton onClick={open} style={{ margin: '10px 0' }}>
+          Learn more
+        </StyledButton>
+        <StyledButton onClick={() => dispatch(removeFromFavorite(advert))}>
+          Delete
+        </StyledButton>
       </StyledContent>
       {isOpen && <Modal close={close} advert={advert} />}
     </StyledItem>

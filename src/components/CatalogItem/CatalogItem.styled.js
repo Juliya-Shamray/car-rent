@@ -12,6 +12,7 @@ export const StyledItem = styled.li`
 export const StyledImg = styled.img`
   height: 268px;
   border-radius: 14px;
+  object-fit: cover;
 `;
 
 export const StyledImgIcon = styled(Heart)`
