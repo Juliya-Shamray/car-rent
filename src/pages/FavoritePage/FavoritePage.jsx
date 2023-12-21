@@ -1,4 +1,4 @@
-import { FavoriteItem } from 'components/FavoriteItem/FavoriteItem';
+import { CatalogItem } from 'components/CatalogItem/CatalogItem';
 import {
   StyledButton,
   StyledList,
@@ -20,8 +20,12 @@ export const FavoritePage = () => {
           <h2>You haven't chosen anything yet)</h2>
         ) : (
           <StyledList>
-            {favorites.map((favorite, index) => (
-              <FavoriteItem key={favorite.id} advert={favorite} />
+            {favorites.map(favorite => (
+              <CatalogItem
+                showDeleteButton
+                key={favorite.id}
+                advert={favorite}
+              />
             ))}
           </StyledList>
         )}

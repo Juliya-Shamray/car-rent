@@ -33,6 +33,7 @@ export const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 180px;
+  justify-content: space-between;
 `;
 export const StyledWrapper = styled.div`
   display: flex;
