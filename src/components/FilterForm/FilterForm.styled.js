@@ -156,19 +156,19 @@ export const customStyles = {
 export const custom2Styles = {
   ...baseCustomStyles,
   container: () => ({
-    width: '130px',
+    width: '150px',
   }),
   menu: provided => ({
     ...provided,
     top: 'auto',
-    width: '130px',
+    width: '150px',
     maxHeight: '188px',
     zIndex: 100,
     borderRadius: '14px',
   }),
   menuList: provided => ({
     ...provided,
-    width: '130px',
+    width: '150px',
     padding: '14px 8px 14px 18px',
     border: '1px solid rgba(18, 20, 23, 0.05)',
     borderRadius: '14px',

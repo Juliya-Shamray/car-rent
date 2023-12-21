@@ -36,7 +36,8 @@ export const CatalogPage = () => {
   const isFilterOn =
     Boolean(filterBrand) ||
     Boolean(filterPrice) ||
-    (Boolean(filterMileageTo) && Boolean(filterMileageFrom));
+    Boolean(filterMileageTo) ||
+    Boolean(filterMileageFrom);
 
   useEffect(() => {
     if (allAdverts.length !== 0) {
@@ -51,6 +52,10 @@ export const CatalogPage = () => {
         (filterBrand ? advert.make === filterBrand : true) &&
         (filterPrice
           ? Number(advert.rentalPrice.slice(1)) <= Number(filterPrice)
+          : true) &&
+        (filterMileageFrom && filterMileageTo
+          ? advert.mileage >= Number(filterMileageFrom) &&
+            advert.mileage <= Number(filterMileageTo)
           : true)
     );
   };

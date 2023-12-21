@@ -49,7 +49,10 @@ export const FilterForm = () => {
     numbersArray.push(i);
   }
 
-  const optionsPrice = numbersArray.map(num => ({ value: num, label: num }));
+  const optionsPrice = numbersArray.map(num => ({
+    value: num,
+    label: num,
+  }));
 
   const onChangeSelect = selectedOption => {
     setSelectedBrandOption(selectedOption);
@@ -60,7 +63,6 @@ export const FilterForm = () => {
   };
 
   const onChangeMileageFrom = e => {
-    console.log(e.target.value);
     setMileageFrom(e.target.value);
   };
 
@@ -70,8 +72,13 @@ export const FilterForm = () => {
 
   const onSubmit = e => {
     e.preventDefault();
+
+    dispatch(updateFilterBrand(selectedBrandOption.value));
+    dispatch(updateFilterPrice(selectedPriceOption.value));
+
     const isMileageFromFilled = Boolean(mileageFrom);
     const isMileageToFilled = Boolean(mileageTo);
+
     if (isMileageFromFilled && !isMileageToFilled) {
       setMileageToRequired(true);
       toast.error('Mileage To is required');
@@ -82,13 +89,12 @@ export const FilterForm = () => {
       toast.error('Mileage From is required');
       return;
     }
-    if (Number(mileageFrom) >= Number(mileageTo)) {
+    if (mileageFrom && mileageTo && Number(mileageFrom) >= Number(mileageTo)) {
       setMileageRangeError(true);
       toast.error('Invalid mileage range');
       return;
     }
-    dispatch(updateFilterBrand(selectedBrandOption.value));
-    dispatch(updateFilterPrice(selectedPriceOption.value));
+
     dispatch(updateMileageFrom(mileageFrom));
     dispatch(updateMileageTo(mileageTo));
   };
@@ -111,8 +117,13 @@ export const FilterForm = () => {
           defaultValue={filterPrice}
           onChange={onChangePrice}
           options={optionsPrice}
-          placeholder="To  &#36;"
+          placeholder="To $"
           styles={custom2Styles}
+          formatOptionLabel={({ value, label }) => (
+            <div>
+              {filterPrice && filterPrice === label ? `To ${value} $` : label}
+            </div>
+          )}
         />
       </StyledWrap>
 
