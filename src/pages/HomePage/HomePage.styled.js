@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 export const StyledWrapper = styled.div`
   min-height: 94vh;
@@ -29,6 +30,9 @@ export const StyledTitle = styled.h1`
     line-height: 1.5;
   }
 `;
+
+export const MotionStyledTitle = motion(StyledTitle);
+
 export const StyledWrap = styled.div`
   margin-top: 80px;
   @media screen and (min-width: 768px) {
@@ -44,6 +48,8 @@ export const StyledWrap = styled.div`
 export const StyleSubTitle = styled.h2`
   font-size: 20px;
 `;
+
+export const MotionStyledSubTitle = motion(StyleSubTitle);
 
 export const StyleList = styled.ul`
   list-style: disc;
