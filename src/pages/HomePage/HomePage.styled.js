@@ -2,10 +2,12 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
+import rentImg from '../../images/rent.jpg';
+
 export const StyledWrapper = styled.div`
   min-height: 94vh;
   @media screen and (min-width: 768px) {
-    background-image: url('https://driveforce.ua/assets/uploads/images/content/83626-rent-car.jpg');
+    background-image: url(${rentImg});
     background-repeat: no-repeat;
     background-size: cover;
   }
